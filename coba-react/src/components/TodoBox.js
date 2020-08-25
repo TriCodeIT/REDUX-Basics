@@ -57,7 +57,7 @@ export default class TodoBox extends React.Component {
 
     removeTodo(id) {
         this.setState((state, props) => ({
-            data: state.data.filter(item => item.id !== id)
+            data: state.data.filter(item => item.id !== id)// Filter harus balikin, yang TRUE akan aman, sedangkan yang FALSE dibalikin akan hilang, Yang tidak sama (!) id jadi id nya yang didelete hilang
         }));
         request.delete(`chats/${id}`).then(data => {
             console.log(data)

@@ -4,9 +4,18 @@ import './index.css';
 import TodoBox from './components/TodoBox'
 import * as serviceWorker from './serviceWorker';
 
+import rootReducer from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
+
 ReactDOM.render(
   <React.StrictMode>
+     <Provider store={store}>
     <TodoBox />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
